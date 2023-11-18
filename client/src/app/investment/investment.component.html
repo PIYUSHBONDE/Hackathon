@@ -1,38 +1,65 @@
 <!-- predict-form.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Investment Predictor</title>
+</head>
+<body>
 
-<h1>Investment Predictor</h1>
-<form (ngSubmit)="onSubmit()">
-  <label for="gender">Gender:</label>
-  <select id="gender" name="gender" [(ngModel)]="formData.gender">
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-  </select>
+  <div class="container">
+    <h1>Investment Predictor</h1>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select class="form-control" id="gender" name="gender" [(ngModel)]="formData.gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
 
-  <label for="age">Age:</label>
-  <input type="number" id="age" name="age" [(ngModel)]="formData.age" required>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" id="age" name="age" [(ngModel)]="formData.age" required>
+      </div>
 
-  <label for="salary">Salary:</label>
-  <input type="number" id="salary" name="salary" [(ngModel)]="formData.salary" required>
+      <div class="form-group">
+        <label for="salary">Salary:</label>
+        <input type="number" class="form-control" id="salary" name="salary" [(ngModel)]="formData.salary" required>
+      </div>
 
-  <label for="amount_to_be_invested">Amount To Be Invested:</label>
-  <input type="number" id="amount_to_be_invested" name="amount_to_be_invested" [(ngModel)]="formData.amount_to_be_invested" required>
+      <div class="form-group">
+        <label for="amount_to_be_invested">Amount To Be Invested:</label>
+        <input type="number" class="form-control" id="amount_to_be_invested" name="amount_to_be_invested" [(ngModel)]="formData.amount_to_be_invested" required>
+      </div>
 
-  <label for="num_children">Number Of Children:</label>
-  <input type="number" id="num_children" name="num_children" [(ngModel)]="formData.num_children" required>
+      <div class="form-group">
+        <label for="num_children">Number Of Children:</label>
+        <input type="number" class="form-control" id="num_children" name="num_children" [(ngModel)]="formData.num_children" required>
+      </div>
 
-  <label for="domain_of_expertise">Domain Of Expertise:</label>
-  <select id="domain_of_expertise" name="domain_of_expertise" [(ngModel)]="formData.domain_of_expertise">
-    <option value="Automobile">Automobile</option>
-    <option value="Medicine">Medicine</option>
-    <option value="Finance">Finance</option>
-    <option value="IT">IT</option>
-    <option value="Legal">Legal</option>
-  </select>
+      <div class="form-group">
+        <label for="domain_of_expertise">Domain Of Expertise:</label>
+        <select class="form-control" id="domain_of_expertise" name="domain_of_expertise" [(ngModel)]="formData.domain_of_expertise">
+          <option value="Automobile">Automobile</option>
+          <option value="Medicine">Medicine</option>
+          <option value="Finance">Finance</option>
+          <option value="IT">IT</option>
+          <option value="Legal">Legal</option>
+        </select>
+      </div>
 
-  <button type="submit">Predict</button>
-</form>
+      <button type="submit" class="btn btn-primary">Predict</button>
+    </form>
 
-<div *ngIf="predictionResult">
-  <h2>Prediction Result:</h2>
-  <p>{{ predictionResult }}</p>
-</div>
+    <div *ngIf="predictionResult">
+      <h2>Prediction Result:</h2>
+      <p>{{ predictionResult }}</p>
+    </div>
+  </div>
+
+</body>
+</html>
