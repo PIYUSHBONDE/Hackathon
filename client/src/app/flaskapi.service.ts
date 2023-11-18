@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GetData } from './models/GetData';
+import { Observable } from 'rxjs';
 import { GetPrediction } from './models/GetPrediction';
 import { GetSavedPrediction } from './models/GetSavedPredictions';
 import { SignInData } from './models/SignInData';
 import { SignUpData } from './models/SignUpData';
+import { GetInvestment } from './models/GetInvestment';
 @Injectable({
   providedIn: 'root',
 })
@@ -97,5 +99,12 @@ export class FlaskapiService {
   }
   public signOut() {
     return this.httpClient.get<any>(this.server + 'logout');
+  }
+
+  public predict(data: any): Observable<GetInvestment> {
+    // Assuming you have an endpoint for prediction in your Flask API
+    const predictEndpoint = 'http://localhost:5000/predict';
+
+    return this.httpClient.post<GetInvestment>(predictEndpoint, data);
   }
 }

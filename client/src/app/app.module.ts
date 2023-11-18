@@ -25,6 +25,7 @@ import { PredictionResultAuthGuard } from './predictionResultAuthGuard.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
+import { InvestmentComponent } from './investment/investment.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
     VisualizationComponent,
     BootstrapModalComponent,
     FeaturesComponent,
+    InvestmentComponent,
   ],
   imports: [
     FormsModule,

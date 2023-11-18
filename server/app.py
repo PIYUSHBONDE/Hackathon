@@ -28,8 +28,16 @@ warnings.simplefilter('ignore', ConvergenceWarning)
 load_dotenv()
 # MongoDB URL
 mongoDB_url = os.getenv('MONGO_DB_URL', 'default_value_if_not_set')
-
+model = joblib.load('investment_model1.pkl')
 # Flask secret key
+
+# Mapping for inverse transformation
+inverse_mapping = {
+    0: 'Mutual Funds and Stocks',
+    1: 'Government Schemes',
+    2: 'Bank FDs',
+    3: 'Private Bank Investment'
+}
 
 mongoDB=pymongo.MongoClient(mongoDB_url)
 db=mongoDB['SalesPrediction']
@@ -223,6 +231,8 @@ def signIn():
             else:
                 return "Password is incorrect"
         return 'Sorry, user with this email id does not exist'
+
+
 @app.route('/sign-up/',methods=['POST'])
 def signUp():
     if request.method=="POST":
@@ -247,6 +257,45 @@ def signout():
         session.clear()
     return jsonify("logout successful")
 
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    if request.method == 'POST':
+        try:
+            data = request.json  # Parse JSON data from the request body
+            # Extract input values from the JSON data
+            gender = data['gender']
+            age = int(data['age'])
+            salary = float(data['salary'])
+            amount_to_be_invested = float(data['amount_to_be_invested'])
+            num_children = int(data['num_children'])
+            domain_of_expertise = data['domain_of_expertise']
+
+            # Create a DataFrame with the user input
+            input_data = pd.DataFrame({
+                'Gender': [gender],
+                'Age': [age],
+                'Salary': [salary],
+                'Amount To Be Invested': [amount_to_be_invested],
+                'Number Of Children': [num_children],
+                'Domain Of Expertise': [domain_of_expertise]
+            })
+
+            # Encode categorical variables
+            input_data['Gender'] = input_data['Gender'].map({'Male': 0, 'Female': 1})
+            input_data['Domain Of Expertise'] = input_data['Domain Of Expertise'].map({
+                'Automobile': 0, 'Medicine': 1, 'Finance': 2, 'IT': 3, 'Legal': 4
+            })
+
+            # Make prediction
+            prediction = model.predict(input_data)[0]
+            predicted_investment = inverse_mapping.get(prediction, 'Unknown Investment')
+
+            # Return the prediction result in JSON format
+            return jsonify(prediction=predicted_investment)
+
+        except Exception as e:
+            return jsonify(error=str(e)), 400  # Return error response
 
 
 if __name__=="__main__":

@@ -1,0 +1,38 @@
+<!-- predict-form.component.html -->
+
+<h1>Investment Predictor</h1>
+<form (ngSubmit)="onSubmit()">
+  <label for="gender">Gender:</label>
+  <select id="gender" name="gender" [(ngModel)]="formData.gender">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age" [(ngModel)]="formData.age" required>
+
+  <label for="salary">Salary:</label>
+  <input type="number" id="salary" name="salary" [(ngModel)]="formData.salary" required>
+
+  <label for="amount_to_be_invested">Amount To Be Invested:</label>
+  <input type="number" id="amount_to_be_invested" name="amount_to_be_invested" [(ngModel)]="formData.amount_to_be_invested" required>
+
+  <label for="num_children">Number Of Children:</label>
+  <input type="number" id="num_children" name="num_children" [(ngModel)]="formData.num_children" required>
+
+  <label for="domain_of_expertise">Domain Of Expertise:</label>
+  <select id="domain_of_expertise" name="domain_of_expertise" [(ngModel)]="formData.domain_of_expertise">
+    <option value="Automobile">Automobile</option>
+    <option value="Medicine">Medicine</option>
+    <option value="Finance">Finance</option>
+    <option value="IT">IT</option>
+    <option value="Legal">Legal</option>
+  </select>
+
+  <button type="submit">Predict</button>
+</form>
+
+<div *ngIf="predictionResult">
+  <h2>Prediction Result:</h2>
+  <p>{{ predictionResult }}</p>
+</div>
