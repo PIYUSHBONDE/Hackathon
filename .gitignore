@@ -1,0 +1,44 @@
+# Ignore node_modules in the root directory
+node_modules/
+
+client/.angular/cache/
+client/dist/
+# Ignore client-side dependencies in the client folder
+client/node_modules/
+
+# Ignore compiled files for the Angular app in the client folder
+client/dist/
+
+# Ignore server-side dependencies in the server folder
+server/venv/
+server/__pycache__/
+server/*.pyc
+
+# Ignore environment files for Flask (e.g., .env)
+server/.env
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore log files and database files
+*.log
+*.db
+
+# Ignore IDE-related files
+.vscode/
+.idea/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore local configuration files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore Docker-related files
+docker-compose.yml
+docker-compose.override.yml
+docker-compose.prod.yml
+Dockerfile.prod
