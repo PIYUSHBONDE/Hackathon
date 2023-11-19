@@ -1,0 +1,91 @@
+/* Add these styles in the investment.component.css file */
+
+#predictDatasetDiv {
+    font-family: "Inter", sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5em;
+  }
+  
+  .predictDatasetCard {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: #ffffff; /* Add a background color for the card */
+  }
+  
+  .predictDatasetHeading {
+    text-align: center;
+    padding-bottom: 0.8em;
+    color: #343a40; /* Set the text color to a dark color for visibility */
+  }
+  
+  form {
+    text-align: center;
+  }
+  
+  button {
+    margin-top: 1em;
+    color: #ffffff; /* Set the text color to white */
+    background-color: #343a40; /* Set the background color */
+  }
+  
+  
+  #navbarcontainer {
+    z-index: 100;
+  }
+  
+  /* body {
+    padding-top: 56px; /* Adjust the value based on your navbar height */
+
+  
+  @media (max-width: 992px) {
+    body {
+      padding-top: 0; /* Reset padding on smaller screens if needed */
+    }
+  }
+  
+  .text {
+    /* z-index: 2000; */
+    position: absolute;
+    color: black;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(50% + 40px);
+  }
+  
+
+  .navbar-brand {
+    color: white !important;
+  }
+
+ /* Force the visibility of the entire navbar */
+.navbar {
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: #343a40 !important; /* Set the desired background color */
+  }
+
+/* Force the visibility of navbar content */
+.navbar-brand,
+.navbar-nav,
+.navbar-text {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+/* Apply background color to navbar text */
+.navbar-text {
+    background-color: #343a40 !important; /* Set the desired background color */
+  }
+
+  .container{
+    margin-top: 0.5rem;
+    /* margin-bottom: -0.5rem; */
+  }
+
+  .predictDatasetCard{
+    margin-top: -0.5rem;
+  }

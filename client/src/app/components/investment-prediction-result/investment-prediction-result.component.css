@@ -1,0 +1,66 @@
+/* prediction-result.component.css */
+
+#predictionResultDiv {
+    font-family: "Inter", sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5em;
+  }
+  
+  .resultCard {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: #ffffff; /* Add a background color for the card */
+    margin-top: 1em;
+    padding: 1em;
+  }
+  
+  .resultHeading {
+    text-align: center;
+    color: #343a40; /* Set the text color to a dark color for visibility */
+  }
+  
+  .resultText {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  
+  .container {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  .btn-primary{
+    margin-top: 20px;
+  }
+  
+.navbar {
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: #343a40 !important; /* Set the desired background color */
+}
+
+/* Force the visibility of navbar content */
+.navbar-brand,
+.navbar-nav,
+.navbar-text {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+/* Apply background color to navbar text */
+.navbar-text {
+    background-color: #343a40 !important; /* Set the desired background color */
+  }
+
+  .container{
+    margin-top: 0.5rem;
+    /* margin-bottom: -0.5rem; */
+  }
+
+  .predictDatasetCard{
+    margin-top: -0.5rem;
+  }
+  

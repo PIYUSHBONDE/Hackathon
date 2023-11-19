@@ -1,0 +1,29 @@
+<!-- prediction-result.component.html -->
+
+<app-navbar
+  (siblingNavbarContainer)="navbarContainer = $event"
+  (siblingAbout)="aboutLink = $event"
+  (siblingSavedPredictions)="savedPredictionsLink = $event"
+  (siblingPredictDataset)="predictDatasetLink = $event"
+  (siblingContactUs)="contactUsLink = $event"
+  (siblingNavBrand)="navBrand = $event"
+  (siblingHome)="home = $event"
+  (siblingFeature)="featureLink = $event"
+  (siblingSamples)="samplesLink = $event"
+  (siblingMoreInfo)="moreInfoLink = $event"
+></app-navbar>
+
+<div id="predictionResultDiv">
+  <div class="container">
+    <h4 class="resultHeading">Prediction Result</h4>
+    
+    <div class="resultCard">
+      <div class="card-body">
+        <p class="resultText">{{ predictionResult }}</p>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+  </div>
+</div>
+

@@ -1,0 +1,79 @@
+<app-navbar
+  (siblingNavbarContainer)="navbarContainer = $event"
+  (siblingAbout)="aboutLink = $event"
+  (siblingSavedPredictions)="savedPredictionsLink = $event"
+  (siblingPredictDataset)="predictDatasetLink = $event"
+  (siblingContactUs)="contactUsLink = $event"
+  (siblingNavBrand)="navBrand = $event"
+  (siblingHome)="home = $event"
+  (siblingFeature)="featureLink = $event"
+  (siblingSamples)="samplesLink = $event"
+  (siblingMoreInfo)="moreInfoLink = $event"
+></app-navbar>
+
+<div #investment id="predictDatasetDiv" data-aos="zoom-out">
+  <div class="container">
+    <h4 class="predictDatasetHeading">Investment Predictor</h4>
+    <div class="card predictDatasetCard">
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="predictForm">
+          <div class="form-group container">
+            <div style="margin-bottom: 1rem;">
+              <label for="gender" class="titleLabel">Gender:</label>
+              <select id="gender" name="gender" formControlName="gender" class="form-control shadow-none">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="age" class="titleLabel">Age:</label>
+                <input type="number" id="age" name="age" formControlName="age" required class="form-control shadow-none">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="salary" class="titleLabel">Salary:</label>
+                <input type="number" id="salary" name="salary" formControlName="salary" required class="form-control shadow-none">
+              </div>
+            </div>
+            <div class="form-row">
+              <!-- Add other form controls similar to the provided example -->
+              <div class="form-group col-md-6">
+                <label for="amount_to_be_invested" class="titleLabel">Amount To Be Invested:</label>
+                <input type="number" id="amount_to_be_invested" name="amount_to_be_invested" formControlName="amount_to_be_invested" required class="form-control shadow-none">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="num_children" class="titleLabel">Number Of Children:</label>
+                <input type="number" id="num_children" name="num_children" formControlName="num_children" required class="form-control shadow-none">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="domain_of_expertise" class="titleLabel">Domain Of Expertise:</label>
+              <select id="domain_of_expertise" name="domain_of_expertise" formControlName="domain_of_expertise" class="form-control shadow-none">
+                <option value="Automobile">Automobile</option>
+                <option value="Medicine">Medicine</option>
+                <option value="Finance">Finance</option>
+                <option value="IT">IT</option>
+                <option value="Legal">Legal</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+          </div>
+        </form>
+
+        <!-- Display the prediction result -->
+        <div *ngIf="predictionResult !== undefined" class="prediction-result">
+          <p>Prediction Result: {{ predictionResult }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner
+  bdColor="white"
+  size="medium"
+  color="#000"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: black">Predicting your dataset...</p>
+</ngx-spinner>
