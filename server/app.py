@@ -22,6 +22,7 @@ from sklearn import metrics
 from passlib.hash import  pbkdf2_sha256
 import warnings
 from statsmodels.tools.sm_exceptions import ConvergenceWarning
+from lime.lime_text import LimeTextExplainer
 from dotenv import load_dotenv
 warnings.simplefilter('ignore', ConvergenceWarning)
 
@@ -29,6 +30,8 @@ load_dotenv()
 # MongoDB URL
 mongoDB_url = os.getenv('MONGO_DB_URL', 'default_value_if_not_set')
 model = joblib.load('investment_model1.pkl')
+# Load the fraud detection model
+fraud_detection_model = joblib.load('fraud_detection_model.pkl')
 # Flask secret key
 
 # Mapping for inverse transformation
@@ -297,6 +300,40 @@ def predict():
         except Exception as e:
             return jsonify(error=str(e)), 400  # Return error response
 
+
+@app.route('/predict-fraud', methods=['POST'])
+def predict_fraud():
+    if request.method == 'POST':
+        try:
+            data = request.get_json()  # Use get_json() to handle JSON data
+
+            # Extract message from JSON data
+            message = data.get('message', '')
+
+            # Make fraud detection prediction
+            prediction = fraud_detection_model.predict([message])[0]
+
+            # Explain the prediction using LIME
+            explainer = LimeTextExplainer(class_names=['normal', 'fraud'])
+            explanation = explainer.explain_instance(message, fraud_detection_model.predict_proba, num_features=5)
+
+            # Prepare data for JSON response
+            response_data = {
+                'message': message,
+                'prediction': prediction,
+                'explanation': explanation.as_list(),
+            }
+
+            # Check if the prediction is fraud or not and include a message
+            if prediction == 1:
+                response_data['fraud_message'] = 'This message is flagged as potential fraud. Further investigation is recommended.'
+            else:
+                response_data['fraud_message'] = 'This message is not flagged as fraud.'
+
+            return jsonify(response_data)
+
+        except Exception as e:
+            return jsonify(error=str(e)), 400  # Return error response
 
 if __name__=="__main__":
     app.run(debug=True)

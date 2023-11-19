@@ -8,7 +8,7 @@ import { SavedPredictionsComponent } from './components/saved-predictions/saved-
 import { AuthGuard } from './authguard.service';
 import { LoggedInAuthGuard } from './loggedInAuthGuard.service';
 import { PredictionResultAuthGuard } from './predictionResultAuthGuard.service';
-import { InvestmentComponent } from './investment/investment.component';
+import { InvestmentComponent } from './components/investment/investment.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {

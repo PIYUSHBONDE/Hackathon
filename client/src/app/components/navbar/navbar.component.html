@@ -29,9 +29,14 @@
             >Home <span class="sr-only">(current)</span></a
           >
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
+        <!-- <li class="nav-item" *ngIf="isLoggedIn">
           <a class="nav-link" routerLink="/predict-dataset" #predictDatasetLink
             >Predict Dataset</a
+          >
+        </li> -->
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/predict-investment" #predictDatasetLink
+            >Predict Investment</a
           >
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
